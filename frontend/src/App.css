@@ -13,7 +13,7 @@ html, body, #root {
 
 /* === BODY === */
 body {
-  background: #ffffff !important; /* Sostituisce il gradient con bianco puro */
+  background: #01827b !important; 
   color: #222;
   font-family: 'Press Start 2P', monospace;
   margin: 0;
@@ -33,7 +33,7 @@ body {
   min-height: 100vh; /* Mantiene l'altezza minima */
   justify-content: center;
   box-sizing: border-box;
-  background: #ffffff; /* Backup: bianco anche per il container */
+  background: #01827b; /* Backup: bianco anche per il container */
 }
 
 /* Mobile: un po' più in alto per dispositivi piccoli */
@@ -50,7 +50,6 @@ body {
   width: 120px;
   height: 120px;
   margin-bottom: 20px;
-  filter: drop-shadow(0px 0px 8px rgba(100, 0, 255, 0.5));
   transition: transform 0.3s ease;
 }
 
@@ -61,13 +60,13 @@ body {
 /* === TITOLI === */
 .title-videogame {
   font-size: 20px;
-  color: #3b00ff;
-  text-shadow: 2px 2px 0px #b3aaff;
+  color: #fffee9;
+  text-shadow: 2px 2px 0px #014c48;
   margin-bottom: 10px;
 }
 
 .subtitle-videogame {
-  color: #555;
+  color: #fffee9e1;
   font-size: 10px;
   margin-bottom: 20px;
 }
@@ -76,7 +75,7 @@ body {
 .divider-videogame {
   width: 80%;
   border: none;
-  border-top: 2px dashed #b3aaff;
+  border-top: 2px dashed #fffee9;
   margin: 20px 0;
 }
 
@@ -101,19 +100,17 @@ body {
 }
 
 .version-card {
-  background-color: white;
-  border: 2px solid #b3aaff;
+  background-color: #fffee9;
   border-radius: 12px;
   padding: 10px;
-  box-shadow: 0px 0px 10px rgba(150, 100, 255, 0.2);
+  box-shadow: 0px 0px 10px #014c48;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .version-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0px 0px 15px rgba(100, 0, 255, 0.4);
+  box-shadow: 0px 0px 15px #014c48;;
 }
 
 html {
-  background: #ffffff;
+  background: #01827b;
 }

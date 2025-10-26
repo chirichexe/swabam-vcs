@@ -1,12 +1,13 @@
+/* VersionList.css */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto+Mono:wght@400&family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 /* === CARD === */
 .version-card {
-  background-color: #ffffff;
-  border: 2px solid #b3aaff;
+  background-color: #fffee9;
+  border: 2px solid #01827b;
   border-radius: 16px;
-  box-shadow: 0 0 12px rgba(100, 0, 255, 0.15);
+  box-shadow: 0 0 12px rgba(1, 130, 123, 0.15);
   transition: transform 0.25s ease, box-shadow 0.3s ease;
   max-width: 700px;
   width: 100%;
@@ -14,8 +15,7 @@
 }
 
 .version-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 20px rgba(100, 0, 255, 0.35);
+  box-shadow: 0 0 20px rgba(1, 130, 123, 0.35);
 }
 
 /* === CONTENUTO CARD === */
@@ -29,7 +29,7 @@
 
 /* === TITOLO === */
 .version-title {
-  color: #2a2a2a;
+  color: #01827b;
   font-family: 'Press Start 2P', monospace !important;
   font-size: 16px;
   font-weight: 600;
@@ -41,28 +41,28 @@
 
 /* === DATA === */
 .version-date {
-  color: #666;
+  color: rgba(123, 123, 123, 0.7);
   font-family: 'Roboto Mono', monospace;
   font-size: 13px;
 }
 
 /* === PULSANTE SCARICA === */
 .download-btn {
-  background-color: #3b00ff !important;
-  color: white !important;
+  background-color: #01827b !important;
+  color: #fffee9 !important;
   font-family: 'Press Start 2P', monospace !important;
   font-size: 9px !important;
   padding: 10px 18px !important;
   border-radius: 8px !important;
-  box-shadow: 0 0 8px rgba(59, 0, 255, 0.4);
+  box-shadow: 0 0 8px rgba(1, 130, 123, 0.6);
   transition: all 0.2s ease !important;
   text-transform: none !important;
   white-space: nowrap !important;
 }
 
 .download-btn:hover {
-  background-color: #5a2aff !important;
-  box-shadow: 0 0 12px rgba(90, 42, 255, 0.6);
+  background-color: rgba(1, 130, 123, 0.8) !important;
+  box-shadow: 0 0 12px rgba(1, 130, 123, 0.6);
 }
 
 /* === MOBILE CLEAN === */
@@ -70,7 +70,7 @@
   .version-content {
     display: flex;
     flex-direction: column !important;
-    align-items: stretch !important; /* piena larghezza */
+    align-items: stretch !important;
     gap: 8px;
   }
 

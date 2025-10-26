@@ -4,6 +4,7 @@ import { Container, CircularProgress, Button } from "@mui/material";
 import VersionList from "./components/VersionList";
 import UploadPage from "./components/UploadPage";
 import axios from "axios";
+import logo from './assets/logo.png';
 import "./App.css";
 
 function Dashboard({ versions, loading }) {
@@ -20,10 +21,10 @@ function Dashboard({ versions, loading }) {
         py: 4
       }}
     >
-      <img src="/logo.png" alt="Swabam Logo" className="logo-videogame" />
-      <h1 className="title-videogame">Benvenuto in via del Pratello 48!</h1>
+      <img src={logo} alt="Swabam Logo" className="logo-videogame" />
+      <h1 className="title-videogame">Benvenuto, stai per giocare a Swabam!</h1>
       <p className="subtitle-videogame">
-        Scegli una versione da scaricare e inizia a giocare a Swabam
+        Scegli una versione da scaricare
       </p>
 
       <hr className="divider-videogame" />
