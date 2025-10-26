@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;600&family=Roboto+Mono:wght@400&display=swap');
+
+/* === CONTAINER PRINCIPALE === */
+.upload-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+  min-height: 100vh;
+  gap: 30px;
+}
+
+/* === TITOLO === */
+.upload-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
+  color: #3b00ff;
+  text-shadow: 2px 2px 0 #b3aaff;
+  text-align: center;
+}
+
+/* === DROPZONE === */
+.dropzone {
+  border: 2px dashed #b3aaff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  text-align: center;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.dropzone.hover {
+  border-color: #5a2aff;
+  box-shadow: 0 0 12px rgba(90, 42, 255, 0.3);
+}
+
+.dropzone p {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+/* === FILE SELEZIONATO === */
+.selected-file {
+  margin-top: 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  color: #2a2a2a;
+  word-break: break-word;
+}
+
+/* === MESSAGGI === */
+.upload-message {
+  margin-top: 8px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  color: #666;
+}
+
+/* === PULSANTI === */
+.upload-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.upload-btn {
+  background-color: #3b00ff;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(59, 0, 255, 0.4);
+  transition: all 0.2s ease;
+}
+
+.upload-btn:hover {
+  background-color: #5a2aff;
+  box-shadow: 0 0 14px rgba(90, 42, 255, 0.6);
+}
+
+.upload-btn:disabled {
+  background-color: #b3b3b3;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* === PROGRESS BAR === */
+.upload-progress {
+  width: 100%;
+  max-width: 500px;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #eee;
+  margin-top: 12px;
+}
+
+.upload-progress-bar {
+  height: 100%;
+  background-color: #3b00ff;
+  transition: width 0.3s ease;
+}

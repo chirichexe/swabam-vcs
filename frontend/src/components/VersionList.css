@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto+Mono:wght@400&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* === CARD === */
+.version-card {
+  background-color: #ffffff;
+  border: 2px solid #b3aaff;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(100, 0, 255, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.version-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(100, 0, 255, 0.35);
+}
+
+/* === CONTENUTO CARD === */
+.version-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* === TITOLO === */
+.version-title {
+  color: #2a2a2a;
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  word-break: break-word;
+  max-width: 450px;
+}
+
+/* === DATA === */
+.version-date {
+  color: #666;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+}
+
+/* === PULSANTE SCARICA === */
+.download-btn {
+  background-color: #3b00ff !important;
+  color: white !important;
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 9px !important;
+  padding: 10px 18px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 8px rgba(59, 0, 255, 0.4);
+  transition: all 0.2s ease !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+.download-btn:hover {
+  background-color: #5a2aff !important;
+  box-shadow: 0 0 12px rgba(90, 42, 255, 0.6);
+}
+
+/* === MOBILE CLEAN === */
+@media (max-width: 600px) {
+  .version-content {
+    display: flex;
+    flex-direction: column !important;
+    align-items: stretch !important; /* piena larghezza */
+    gap: 8px;
+  }
+
+  .version-title,
+  .version-date,
+  .download-btn {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .download-btn {
+    width: 100%;
+  }
+}

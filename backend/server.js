@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
@@ -8,6 +10,9 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+// Definisci BASE_DIR usando process.env
+const BASE_DIR = process.env.BASE_DIR;
 
 // Configurazione Multer: directory di destinazione e nomi file
 const storage = multer.diskStorage({
@@ -21,9 +26,9 @@ const upload = multer({ storage });
 // file listing
 app.get("/api/versions", (req, res) => {
   try {
-    const files = fs.readdirSync(process.env.BASE_DIR);
+    const files = fs.readdirSync(BASE_DIR); // Usa BASE_DIR invece di process.env.BASE_DIR
     const result = files.map((file) => {
-      const fullPath = path.join(process.env.BASE_DIR, file);
+      const fullPath = path.join(BASE_DIR, file);
       const stats = fs.statSync(fullPath);
 
       return {
@@ -58,8 +63,8 @@ app.get("/downloads/:filename", (req, res) => {
 // file delete
 app.delete("/api/delete/:filename", (req, res) => {
   const filename = req.params.filename;
-  const filePath = path.join(process.env.BASE_DIR, filename
-);;
+  const filePath = path.join(BASE_DIR, filename); // Usa BASE_DIR invece di process.env.BASE_DIR
+  
   fs.unlink(filePath, (err) => {
     if (err) {
       console.error(err);
@@ -67,12 +72,11 @@ app.delete("/api/delete/:filename", (req, res) => {
     }
     console.log(`🗑️ File cancellato: ${filename}`);
     res.json({ message: "File cancellato correttamente" });
-  }
-);
+  });
 });
+
 /* end API endpoints*/
 
 app.listen(process.env.PORT, () => {
   console.log(`✅ Backend in ascolto su http://localhost:${process.env.PORT}`);
 });
-

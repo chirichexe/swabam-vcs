@@ -1,8 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { Container, Typography, Box, CircularProgress, Divider } from "@mui/material";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Container, CircularProgress, Button } from "@mui/material";
 import VersionList from "./components/VersionList";
-import UploadModal from "./components/UploadModal";
+import UploadPage from "./components/UploadPage";
 import axios from "axios";
+import "./App.css";
+
+function Dashboard({ versions, loading }) {
+  return (
+    <Container 
+      className="container-videogame"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        textAlign: 'center',
+        py: 4
+      }}
+    >
+      <img src="/logo.png" alt="Swabam Logo" className="logo-videogame" />
+      <h1 className="title-videogame">Benvenuto in via del Pratello 48!</h1>
+      <p className="subtitle-videogame">
+        Scegli una versione da scaricare e inizia a giocare a Swabam
+      </p>
+
+      <hr className="divider-videogame" />
+
+      {loading ? (
+        <div className="loading-spinner">
+          <CircularProgress />
+        </div>
+      ) : (
+        <div className="version-list">
+          <VersionList versions={versions} />
+        </div>
+      )}
+    </Container>
+  );
+}
 
 function App() {
   const [versions, setVersions] = useState([]);
@@ -11,7 +48,7 @@ function App() {
   const loadVersions = () => {
     setLoading(true);
     axios
-      .get("http://localhost:4000/api/versions")
+      .get(`http://localhost:4000/api/versions`)
       .then((res) => setVersions(res.data))
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
@@ -22,27 +59,18 @@ function App() {
   }, []);
 
   return (
-    <Container sx={{ textAlign: "center", mt: 8, position: "relative" }}>
-      <UploadModal onUploadSuccess={loadVersions} />
-
-      <Box>
-        <img
-          src="/logo.png"
-          alt="Swabam Logo"
-          style={{ width: 120, height: 120, marginBottom: 16 }}
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={<Dashboard versions={versions} loading={loading} />}
         />
-        <Typography variant="h3" gutterBottom>
-          Benvenuto su Swabam!
-        </Typography>
-        <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-          Scegli una versione da scaricare e inizia a giocare
-        </Typography>
-
-        <Divider sx={{ my: 3 }} />
-
-        {loading ? <CircularProgress /> : <VersionList versions={versions} />}
-      </Box>
-    </Container>
+        <Route
+          path="/upload"
+          element={<UploadPage onUploadSuccess={loadVersions} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
