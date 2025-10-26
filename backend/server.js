@@ -26,7 +26,7 @@ const upload = multer({ storage });
 // file listing
 app.get("/api/versions", (req, res) => {
   try {
-    const files = fs.readdirSync(BASE_DIR); // Usa BASE_DIR invece di process.env.BASE_DIR
+    const files = fs.readdirSync(BASE_DIR);
     const result = files.map((file) => {
       const fullPath = path.join(BASE_DIR, file);
       const stats = fs.statSync(fullPath);
@@ -34,7 +34,7 @@ app.get("/api/versions", (req, res) => {
       return {
         name: file,
         date: stats.mtime.toISOString().split("T")[0],
-        url: `http://localhost:${process.env.PORT}/downloads/${encodeURIComponent(file)}`,
+        url: `/downloads/${encodeURIComponent(file)}`, // URL relativo invece di localhost
       };
     });
     res.json(result);
@@ -63,7 +63,7 @@ app.get("/downloads/:filename", (req, res) => {
 // file delete
 app.delete("/api/delete/:filename", (req, res) => {
   const filename = req.params.filename;
-  const filePath = path.join(BASE_DIR, filename); // Usa BASE_DIR invece di process.env.BASE_DIR
+  const filePath = path.join(BASE_DIR, filename);
   
   fs.unlink(filePath, (err) => {
     if (err) {
@@ -77,6 +77,6 @@ app.delete("/api/delete/:filename", (req, res) => {
 
 /* end API endpoints*/
 
-app.listen(process.env.PORT, () => {
-  console.log(`✅ Backend in ascolto su http://localhost:${process.env.PORT}`);
+app.listen(process.env.PORT || 4000, '0.0.0.0', () => {
+  console.log(`✅ Backend in ascolto sulla porta ${process.env.PORT || 4000}`);
 });

@@ -13,11 +13,12 @@ html, body, #root {
 
 /* === BODY === */
 body {
-  background: linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+  background: #ffffff !important; /* Sostituisce il gradient con bianco puro */
   color: #222;
   font-family: 'Press Start 2P', monospace;
   margin: 0;
   padding: 0;
+  min-height: 100vh; /* Importante: assicura che il body sia almeno alto quanto la viewport */
 }
 
 /* === CONTAINER PRINCIPALE === */
@@ -29,9 +30,10 @@ body {
   padding: 20px;
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100vh; /* Mantiene l'altezza minima */
   justify-content: center;
   box-sizing: border-box;
+  background: #ffffff; /* Backup: bianco anche per il container */
 }
 
 /* Mobile: un po' più in alto per dispositivi piccoli */
@@ -110,4 +112,8 @@ body {
 .version-card:hover {
   transform: translateY(-3px);
   box-shadow: 0px 0px 15px rgba(100, 0, 255, 0.4);
+}
+
+html {
+  background: #ffffff;
 }
