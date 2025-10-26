@@ -2,6 +2,9 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import "./UploadPage.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 const UploadPage = ({ onUploadSuccess }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -47,7 +50,7 @@ const UploadPage = ({ onUploadSuccess }) => {
     try {
       setUploading(true);
       setMessage("");
-      const res = await axios.post(`/api/upload`, formData, {
+      const res = await axios.post(`${API_URL}/upload`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         onUploadProgress: (progressEvent) => {
           const percent = Math.round(

@@ -7,6 +7,8 @@ import axios from "axios";
 import logo from './assets/logo.png';
 import "./App.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Dashboard({ versions, loading }) {
   return (
     <Container 
@@ -49,7 +51,7 @@ function App() {
   const loadVersions = () => {
     setLoading(true);
     axios
-      .get(`/api/versions`)
+      .get(`${API_URL}/versions`)
       .then((res) => setVersions(res.data))
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
