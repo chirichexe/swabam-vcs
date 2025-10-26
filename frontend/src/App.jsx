@@ -48,7 +48,7 @@ function App() {
   const loadVersions = () => {
     setLoading(true);
     axios
-      .get(`http://localhost:4000/api/versions`)
+      .get(`/api/versions`)
       .then((res) => setVersions(res.data))
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));

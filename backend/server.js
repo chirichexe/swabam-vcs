@@ -34,7 +34,7 @@ app.get("/api/versions", (req, res) => {
       return {
         name: file,
         date: stats.mtime.toISOString().split("T")[0],
-        url: `/downloads/${encodeURIComponent(file)}`, // URL relativo invece di localhost
+        url: `/api/downloads/${encodeURIComponent(file)}`, // URL relativo invece di localhost
       };
     });
     res.json(result);
@@ -54,7 +54,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 });
 
 // file download
-app.get("/downloads/:filename", (req, res) => {
+app.get("/api/downloads/:filename", (req, res) => {
   const filename = req.params.filename;
   const filePath = path.join(BASE_DIR, filename);
   res.download(filePath);
