@@ -7,7 +7,7 @@ services:
     ports:
       - "4000:4000"
     volumes:
-      - /home/default/swabam:/home/default/swabam  # cartella con i file reali
+      - /home/default/swabam:/home/default/swabam
     restart: unless-stopped
 
   frontend:
