@@ -45,13 +45,25 @@ app.get("/api/versions", (req, res) => {
 });
 
 // file upload
-app.post("/api/upload", upload.single("file"), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ error: "Nessun file ricevuto" });
+app.post("/api/upload", (req, res) => {
+  // pulisci la cartella prima di caricare il nuovo file
+  if (fs.existsSync(BASE_DIR)) {
+    const files = fs.readdirSync(BASE_DIR);
+    for (const file of files) {
+      fs.unlinkSync(path.join(BASE_DIR, file));
+    }
   }
-  console.log(`📦 File caricato: ${req.file.originalname}`);
-  res.json({ message: "File caricato correttamente", filename: req.file.originalname });
+
+  // carica il nuovo file con Multer
+  upload.single("file")(req, res, (err) => {
+    if (err) return res.status(500).json({ error: "Errore caricando il file" });
+    if (!req.file) return res.status(400).json({ error: "Nessun file ricevuto" });
+
+    console.log(`📦 File caricato: ${req.file.originalname}`);
+    res.json({ message: "File caricato correttamente", filename: req.file.originalname });
+  });
 });
+
 
 // file download
 app.get("/api/downloads/:filename", (req, res) => {
